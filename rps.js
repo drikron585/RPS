@@ -1,21 +1,31 @@
+const selectionButtons = document.querySelectorAll(".selection");
+selectionButtons.forEach(button => {// and for each one we add a 'click' listener
+        button.addEventListener('click', function(){onClickRoundFunction(button.innerHTML)});
+    });
+function onClickRoundFunction(selection) {
+    console.log(selection);
+    alert(singleRound(selection));
+    }
+
+
 function getComputerChoice(){
     let randomNum = Math.random()*10;
     let choice = Math.floor(randomNum) % 3
-    console.log(choice);
     switch(choice) {
         case 0:
-            return "rock";
+            return "Rock";
         case 1:
-            return "paper";
+            return "Paper";
         case 2:
-            return "scissors";
+            return "Scissors";
         default:
-            return "rps selector is broken";
+            return "Rps selector is broken";
     }
 }
 
 
-function singleRound(playerSelection, computerSelection) {
+function singleRound(playerSelection) {
+    computerSelection = getComputerChoice();
     switch(true) {
         case (playerSelection === computerSelection):
             return `You both picked ${playerSelection}`;
@@ -55,4 +65,3 @@ function game(){
         console.log("Tie game!");
     }
 }
-console.log(game());
